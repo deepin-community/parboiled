@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+export JAVA_HOME=/usr/lib/jvm/default-java
+VERSION = $(shell dpkg-parsechangelog | sed -rne 's/^Version: ([0-9.]+)[-+].*$$/\1/p')
+
+%:
+	dh $@ --buildsystem=ant --with maven-repo-helper
+
+override_dh_auto_build:
+	dh_auto_build -- -f debian/build.xml
+
+override_dh_auto_clean:
+	mh_clean
+	rm -Rf parboiled-core/target
+	rm -Rf parboiled-java/target
+
+get-orig-source:
+	uscan --download-current-version --force-download --rename
+
+get-orig-pom:
+	wget http://central.maven.org/maven2/org/parboiled/parboiled-core/$(VERSION)/parboiled-core-$(VERSION).pom -O debian/pom-core.xml
+	wget http://central.maven.org/maven2/org/parboiled/parboiled-java/$(VERSION)/parboiled-java-$(VERSION).pom -O debian/pom-java.xml

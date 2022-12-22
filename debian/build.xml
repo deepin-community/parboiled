@@ -1,0 +1,28 @@
+<project default="build" basedir="..">
+  <property name="ant.build.javac.source" value="1.6"/>
+  <property name="ant.build.javac.target" value="1.6"/>
+
+  <target name="build" depends="build.core,build.java"/>
+
+  <target name="build.core">
+    <mkdir dir="parboiled-core/target/classes"/>
+    <javac srcdir="parboiled-core/src/main/java" destdir="parboiled-core/target/classes" debug="yes" includeantruntime="false"/>
+    <jar jarfile="parboiled-core/target/parboiled-core.jar">
+      <fileset dir="parboiled-core/target/classes"/>
+    </jar>
+  </target>
+
+  <target name="build.java">
+    <mkdir dir="parboiled-java/target/classes"/>
+    <javac srcdir="parboiled-java/src/main/java" destdir="parboiled-java/target/classes" debug="yes" includeantruntime="false">
+      <classpath>
+        <pathelement path="parboiled-core/target/classes"/>
+        <pathelement path="/usr/share/java/asm-all.jar"/>
+      </classpath>
+    </javac>
+    <jar jarfile="parboiled-java/target/parboiled-java.jar">
+      <fileset dir="parboiled-java/target/classes"/>
+    </jar>
+  </target>
+
+</project>

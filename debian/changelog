@@ -1,0 +1,27 @@
+parboiled (1.1.7-2.1) unstable; urgency=medium
+
+  * Non maintainer upload by the Reproducible Builds team.
+  * No source change upload to rebuild on buildd with .buildinfo files.
+
+ -- Holger Levsen <holger@debian.org>  Tue, 29 Dec 2020 00:05:49 +0100
+
+parboiled (1.1.7-2) unstable; urgency=medium
+
+  * Depend on libasm-java (>= 5.0) instead of libasm4-java
+  * Refreshed the poms (debian/pom-core.xml and debian/pom-java.xml)
+  * Standards-Version updated to 3.9.8
+  * Use secure Vcs-* URLs
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 03 Oct 2016 12:58:09 +0200
+
+parboiled (1.1.7-1) unstable; urgency=medium
+
+  * New upstream release
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Thu, 19 Mar 2015 14:05:28 +0100
+
+parboiled (1.1.6-1) unstable; urgency=medium
+
+  * Initial release (Closes: #685875)
+
+ -- Emmanuel Bourg <ebourg@apache.org>  Mon, 10 Nov 2014 21:10:42 +0100
